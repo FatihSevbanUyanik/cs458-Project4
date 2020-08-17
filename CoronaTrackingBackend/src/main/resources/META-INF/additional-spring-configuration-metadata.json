@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "app.jwtPasswordResetExpirationInMs",
+      "type": "java.lang.String",
+      "description": "Description for app.jwtPasswordResetExpirationInMs."
+  }
+] }
