@@ -10,6 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface RepoTrack extends JpaRepository<EntityTrack, Long> {
-    List<EntityTrack> findAllByCreator(EntityUser entityUser);
+    List<EntityTrack> findAllByCreatorOrderByCreatedAtDesc(EntityUser entityUser);
     Optional<EntityTrack> findByCreatorIdAndId(Long creatorId, Long id);
 }

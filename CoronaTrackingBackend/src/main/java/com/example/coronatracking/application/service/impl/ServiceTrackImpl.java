@@ -64,7 +64,7 @@ public class ServiceTrackImpl implements ServiceTrack {
         if (entityTrack.isRunnyNose()) { metric += 1; symptomCount++; }
 
         if (metric <= 6) { entityTrack.setStatus("Low Risk"); }
-        else if (metric <= 12) { entityTrack.setStatus("Medium Risk"); }
+        else if (metric <= 10) { entityTrack.setStatus("Medium Risk"); }
         else { entityTrack.setStatus("High Risk"); }
         entityTrack.setSymptomCount(symptomCount);
         entityUser.addTrack(entityTrack);
@@ -84,7 +84,7 @@ public class ServiceTrackImpl implements ServiceTrack {
         }
 
         EntityUser entityUser = optional.get();
-        List<EntityTrack> entityTracks = repoTrack.findAllByCreator(entityUser);
+        List<EntityTrack> entityTracks = repoTrack.findAllByCreatorOrderByCreatedAtDesc(entityUser);
 
         Type listType = new TypeToken<List<ResponseTrack>>() {}.getType();
         return mapper.map(entityTracks, listType);

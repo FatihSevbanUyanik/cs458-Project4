@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '@/store/index.js'
 Vue.use(VueRouter)
 
 // auth
@@ -64,6 +65,23 @@ const routes = [
 
 const router = new VueRouter({
   routes
+})
+
+router.beforeEach((to, from, next) => {
+	const requiresAuth 	  = to.matched.some(record => record.meta.requiresAuth);
+	const requiresVisitor = to.matched.some(record => record.meta.requiresVisitor);
+
+	if (requiresAuth && !store.getters.isUserSignedIn) {
+		next({ name: 'auth.signIn' });
+	} 
+	else if (requiresVisitor && store.getters.isUserSignedIn) {
+		next({
+      name: "track.index"
+    });
+	} 
+	else {
+		next();
+	}
 })
 
 export default router

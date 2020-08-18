@@ -19,20 +19,20 @@
             <v-divider></v-divider>
             <v-switch class="mx-5" label="Difficulty in Breathing" v-model="symptoms.difficultBreathing"></v-switch>
             <v-divider></v-divider>
-            <v-switch class="mx-5" label="Muscle aches" v-model="symptoms.muscleAche"></v-switch>
+            <v-switch class="mx-5" label="Muscle Aches" v-model="symptoms.muscleAche"></v-switch>
             <v-divider></v-divider>
             <v-switch class="mx-5" label="Chills" v-model="symptoms.chills"></v-switch>
             <v-divider></v-divider>
-            <v-switch class="mx-5" label="Sore throat" v-model="symptoms.soreThroat"></v-switch>
+            <v-switch class="mx-5" label="Sore Throat" v-model="symptoms.soreThroat"></v-switch>
             <v-divider></v-divider>
-            <v-switch class="mx-5" label="Runny nose" v-model="symptoms.runnyNose"></v-switch>
+            <v-switch class="mx-5" label="Runny Nose" v-model="symptoms.runnyNose"></v-switch>
             <v-divider></v-divider>
             <v-switch class="mx-5" label="Headache" v-model="symptoms.headAche"></v-switch>
             <v-divider></v-divider>
-            <v-switch class="mx-5" label="Chest pain" v-model="symptoms.chestPain"></v-switch>
+            <v-switch class="mx-5" label="Chest Pain" v-model="symptoms.chestPain"></v-switch>
             <v-divider></v-divider>
             <div class="text-center">
-               <v-btn color="accent" class="mt-3">Upload</v-btn>
+               <v-btn color="accent" @click="upload" class="mt-3">Upload</v-btn>
             </div>
         </div>
       </v-card>
@@ -55,6 +55,20 @@ export default {
             headAche: false,
             chestPain: false
          }
+      }
+   },
+   methods: {
+      upload() {
+         this.$store.dispatch('createTrack', this.symptoms)
+                    .then(result => { 
+                       if (result.success) {
+                          this.$toastr.s('Track successfully created.') 
+                          this.$router.push({ name: 'track.index' })
+                       } else {
+                          this.$toastr.e('Track could not be created.') 
+                       }
+                     })
+                    .catch(error => { console.log(error) })
       }
    }
 };

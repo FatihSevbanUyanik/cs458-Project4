@@ -11,161 +11,29 @@
          </v-row>
 
          <v-divider></v-divider>
-         <div class="pa-3">
-            <v-card link class="border-green" outlined>
+         
+         <div v-for="(track, index) in data" :key="index" class="pa-3">
+            <v-card :class="getStyle(track.status)" outlined>
                <v-row class="px-5">
-                  <v-col class="col-3">
+                  <v-col class="col-sm-6 col-md-3 col-6">
                      <div class="caption font-weight-medium grey--text">Date</div>
-                     <div class="text-subtitle-2">09.08.2019</div>
+                     <div class="text-subtitle-2">{{ processDate(track.createdAt) }}</div>
                   </v-col>
-                  <v-col class="col-3">
+                  <v-col class="col-sm-6 col-md-3 col-6">
                      <div class="caption font-weight-medium grey--text">Symptomps</div>
-                     <div class="text-subtitle-2">3 Symptomps</div>
+                     <div class="text-subtitle-2">{{ track.symptomCount }} Symptomps</div>
                   </v-col>
-                  <v-col class="col-3">
+                  <v-col class="col-sm-6 col-md-3 col-6">
                      <div class="caption font-weight-medium grey--text">Status</div>
-                     <div class="text-subtitle-2">Healthy</div>
+                     <div class="text-subtitle-2">{{ track.status }}</div>
                   </v-col>
-                  <v-col class="col-2 align-self-center">
-                     <v-btn color="secondary" class="elevation-1 mx-1" fab x-small dark>
+                  <v-col class="col-sm-6 col-md-3 col-6 align-self-center">
+                     <v-btn color="secondary" class="elevation-1 mx-1" 
+                           @click="showTrackDetail(track)" fab x-small dark>
                         <v-icon>mdi-television</v-icon>
                      </v-btn>
-                     <v-btn color="red" class="elevation-1" fab x-small dark>
-                        <v-icon>mdi-delete</v-icon>
-                     </v-btn>
-                  </v-col>
-               </v-row>
-            </v-card>
-         </div>
-
-         <div class="pa-3">
-            <v-card link class="border-green" outlined>
-               <v-row class="px-5">
-                  <v-col class="col-3">
-                     <div class="caption font-weight-medium grey--text">Date</div>
-                     <div class="text-subtitle-2">09.08.2019</div>
-                  </v-col>
-                  <v-col class="col-3">
-                     <div class="caption font-weight-medium grey--text">Symptomps</div>
-                     <div class="text-subtitle-2">3 Symptomps</div>
-                  </v-col>
-                  <v-col class="col-3">
-                     <div class="caption font-weight-medium grey--text">Status</div>
-                     <div class="text-subtitle-2">Healthy</div>
-                  </v-col>
-                  <v-col class="col-2 align-self-center">
-                     <v-btn color="secondary" class="elevation-1 mx-1" fab x-small dark>
-                        <v-icon>mdi-television</v-icon>
-                     </v-btn>
-                     <v-btn color="red" class="elevation-1" fab x-small dark>
-                        <v-icon>mdi-delete</v-icon>
-                     </v-btn>
-                  </v-col>
-               </v-row>
-            </v-card>
-         </div>
-
-         <div class="pa-3">
-            <v-card link class="border-green" outlined>
-               <v-row class="px-5">
-                  <v-col class="col-3">
-                     <div class="caption font-weight-medium grey--text">Date</div>
-                     <div class="text-subtitle-2">09.08.2019</div>
-                  </v-col>
-                  <v-col class="col-3">
-                     <div class="caption font-weight-medium grey--text">Symptomps</div>
-                     <div class="text-subtitle-2">3 Symptomps</div>
-                  </v-col>
-                  <v-col class="col-3">
-                     <div class="caption font-weight-medium grey--text">Status</div>
-                     <div class="text-subtitle-2">Healthy</div>
-                  </v-col>
-                  <v-col class="col-2 align-self-center">
-                     <v-btn color="secondary" class="elevation-1 mx-1" fab x-small dark>
-                        <v-icon>mdi-television</v-icon>
-                     </v-btn>
-                     <v-btn color="red" class="elevation-1" fab x-small dark>
-                        <v-icon>mdi-delete</v-icon>
-                     </v-btn>
-                  </v-col>
-               </v-row>
-            </v-card>
-         </div>
-
-         <div class="pa-3">
-            <v-card link class="border-orange" outlined>
-               <v-row class="px-5">
-                  <v-col class="col-3">
-                     <div class="caption font-weight-medium grey--text">Date</div>
-                     <div class="text-subtitle-2">09.08.2019</div>
-                  </v-col>
-                  <v-col class="col-3">
-                     <div class="caption font-weight-medium grey--text">Symptomps</div>
-                     <div class="text-subtitle-2">3 Symptomps</div>
-                  </v-col>
-                  <v-col class="col-3">
-                     <div class="caption font-weight-medium grey--text">Status</div>
-                     <div class="text-subtitle-2">Healthy</div>
-                  </v-col>
-                  <v-col class="col-2 align-self-center">
-                     <v-btn color="secondary" class="elevation-1 mx-1" fab x-small dark>
-                        <v-icon>mdi-television</v-icon>
-                     </v-btn>
-                     <v-btn color="red" class="elevation-1" fab x-small dark>
-                        <v-icon>mdi-delete</v-icon>
-                     </v-btn>
-                  </v-col>
-               </v-row>
-            </v-card>
-         </div>
-
-         <div class="pa-3">
-            <v-card link class="border-green" outlined>
-               <v-row class="px-5">
-                  <v-col class="col-3">
-                     <div class="caption font-weight-medium grey--text">Date</div>
-                     <div class="text-subtitle-2">09.08.2019</div>
-                  </v-col>
-                  <v-col class="col-3">
-                     <div class="caption font-weight-medium grey--text">Symptomps</div>
-                     <div class="text-subtitle-2">3 Symptomps</div>
-                  </v-col>
-                  <v-col class="col-3">
-                     <div class="caption font-weight-medium grey--text">Status</div>
-                     <div class="text-subtitle-2">Healthy</div>
-                  </v-col>
-                  <v-col class="col-2 align-self-center">
-                     <v-btn color="secondary" class="elevation-1 mx-1" fab x-small dark>
-                        <v-icon>mdi-television</v-icon>
-                     </v-btn>
-                     <v-btn color="red" class="elevation-1" fab x-small dark>
-                        <v-icon>mdi-delete</v-icon>
-                     </v-btn>
-                  </v-col>
-               </v-row>
-            </v-card>
-         </div>
-
-         <div class="pa-3">
-            <v-card link class="border-red" outlined>
-               <v-row class="px-5">
-                  <v-col class="col-3">
-                     <div class="caption font-weight-medium grey--text">Date</div>
-                     <div class="text-subtitle-2">09.08.2019</div>
-                  </v-col>
-                  <v-col class="col-3">
-                     <div class="caption font-weight-medium grey--text">Symptomps</div>
-                     <div class="text-subtitle-2">3 Symptomps</div>
-                  </v-col>
-                  <v-col class="col-3">
-                     <div class="caption font-weight-medium grey--text">Status</div>
-                     <div class="text-subtitle-2">Healthy</div>
-                  </v-col>
-                  <v-col class="col-2 align-self-center">
-                     <v-btn color="secondary" class="elevation-1 mx-1" fab x-small dark>
-                        <v-icon>mdi-television</v-icon>
-                     </v-btn>
-                     <v-btn color="red" class="elevation-1" fab x-small dark>
+                     <v-btn color="red" class="elevation-1" fab x-small dark
+                           @click="deleteTrack(track, index)">
                         <v-icon>mdi-delete</v-icon>
                      </v-btn>
                   </v-col>
@@ -173,11 +41,69 @@
             </v-card>
          </div>
       </v-card>
+
+      <v-dialog v-model="dialog" max-width="500">
+         <TrackDetail
+            @closeDialog="dialog = false"
+            :detail="selectedTrack"
+         ></TrackDetail>
+      </v-dialog>
+
    </div>
 </template>
 
 <script>
-export default {};
+import TrackDetail from '@/components/track/show'
+import Moment from "moment";
+
+export default {
+   components: { TrackDetail },
+   async created() {
+      try {
+         this.data = await this.$store.dispatch('retrieveTracks')
+      } catch(exception) {
+         this.$toaster.e(exception)
+      }
+   },
+   data() {
+      return {
+         data: [],
+         dialog: false,
+         selectedTrack: {}
+      }
+   },
+   methods: {
+      getStyle(status) {
+         if (status == 'High Risk') { return 'border-red' }
+         if (status == 'Medium Risk') { return 'border-orange' }
+         if (status == 'Low Risk') { return 'border-green' }
+      },
+      showTrackDetail(track) {
+         this.selectedTrack = track
+         this.dialog = true
+      },
+      async deleteTrack(track, index) {
+         const payload = { id: track.id }
+         try {
+            const result = await this.$store.dispatch('deleteTrack', payload)
+            if (result.success) {
+               this.$toastr.s('Track Deleted Successfully')
+               this.data.splice(index, 1)
+            } else {
+               this.$toastr.e('Track could not be Deleted')
+            }
+         } 
+         catch (exception) {
+            console.log(exception)
+            this.$toastr.e('Track could not be Deleted')
+         }
+                    
+      },
+      processDate(date) {
+         return Moment(date).format("YYYY-MM-DD");
+      },
+   }
+};
 </script>
 
 <style scoped>

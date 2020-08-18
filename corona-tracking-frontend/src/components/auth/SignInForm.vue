@@ -21,6 +21,11 @@
     </div>
     <v-btn id="btnSignIn" @click="signIn" class="font-weight-bold primary px-10">Login</v-btn>
     <a id="forgotPassword" @click="goToForgotPassword()" style="color: grey" class="ml-2 caption nobr">Forgot Password?</a>
+    <div>
+      <a id="gotoSignUp" @click="goToSignUp()" style="color: grey" class="caption nobr">
+        Not having an Account?<strong>Sign Up</strong>
+      </a>
+    </div>
   </form>
 </template>
 
@@ -61,6 +66,9 @@ export default {
   methods: {
     goToForgotPassword() {
       this.$emit("forgotPassword");
+    },
+    goToSignUp() {
+      this.$emit("goToSignUp");
     },
     signIn() {
       this.$v.$touch();

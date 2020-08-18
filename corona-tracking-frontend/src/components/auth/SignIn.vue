@@ -11,6 +11,7 @@
                                         <component
                                             @goToSignIn="goToSignIn()"
                                             @forgotPassword="gotoForgotPassword()"
+                                            @goToSignUp="goToSignUp()"
                                             :is="componentId"
                                         ></component>
                                     </transition>
@@ -58,6 +59,9 @@ export default {
         },
         goToSignIn() {
             this.componentId = "SignInForm";
+        },
+        goToSignUp() {
+            this.componentId = "SignUpForm";
         }
     }
 };

@@ -5,23 +5,10 @@ import com.example.coronatracking.application.model.request.RequestPassword;
 import com.example.coronatracking.application.model.request.RequestResetPassword;
 import com.example.coronatracking.application.model.request.RequestSignIn;
 import com.example.coronatracking.application.model.request.RequestSignUp;
-import com.example.coronatracking.application.model.response.ResponseJwtAuth;
-import com.example.coronatracking.application.model.response.ResponseOperation;
-import com.example.coronatracking.application.model.response.ResponsePasswordReset;
-import com.example.coronatracking.application.repo.RepoUser;
-import com.example.coronatracking.application.security.JwtTokenProvider;
-import com.example.coronatracking.application.service.ServiceUser;
 import io.jsonwebtoken.lang.Assert;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.junit.Assert.*;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootTest
 class DemoApplicationTests {

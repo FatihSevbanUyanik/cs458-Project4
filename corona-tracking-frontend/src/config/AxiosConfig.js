@@ -17,5 +17,8 @@ export const URL = {
     SIGN_IN: 'auth/signIn',
     SIGN_UP: 'auth/signUp',
     RESET_PASSWORD: 'auth/reset-password',
-    REQUEST_PASSWORD_RESET: 'auth/request-password-reset'
+    REQUEST_PASSWORD_RESET: 'auth/request-password-reset',
+    RETRIEVE_TRACKS: 'track',
+    CREATE_TRACK: 'track',
+    DELETE_TRACK: 'track',
 }

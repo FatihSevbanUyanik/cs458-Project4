@@ -60,6 +60,12 @@
       ></v-text-field>
     </div>
     <v-btn id="btnSignUp" @click="signUp" class="font-weight-bold primary px-10">Register</v-btn>
+    <div>
+      <a id="gotoSignUp" @click="goToSignIn()" style="color: grey" class="caption nobr">
+        Already having an Account?<strong>Sign In</strong>
+      </a>
+    </div>
+    
   </form>
 </template>
 
