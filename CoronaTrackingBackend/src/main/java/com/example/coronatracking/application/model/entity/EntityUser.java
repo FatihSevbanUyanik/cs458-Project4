@@ -5,6 +5,7 @@ import com.example.coronatracking.application.util.EmailValidator;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -33,6 +34,9 @@ public class EntityUser {
 
     @Column(name = "password_reset_token")
     private String passwordResetToken;
+
+    @OneToMany(mappedBy = "creator", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<EntityTrack> tracks;
 
     public EntityUser() { }
 
@@ -98,6 +102,21 @@ public class EntityUser {
 
     public void setPasswordResetToken(String passwordResetToken) {
         this.passwordResetToken = passwordResetToken;
+    }
+
+    public List<EntityTrack> getTracks() {
+        return tracks;
+    }
+
+    public void setTracks(List<EntityTrack> tracks) {
+        this.tracks = tracks;
+    }
+
+    public void addTrack(EntityTrack entityTrack) {
+        if (entityTrack != null) {
+            entityTrack.setCreator(this);
+            tracks.add(entityTrack);
+        }
     }
 
     @Override

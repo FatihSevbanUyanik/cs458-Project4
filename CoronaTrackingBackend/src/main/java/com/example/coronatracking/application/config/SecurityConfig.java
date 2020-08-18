@@ -2,7 +2,7 @@ package com.example.coronatracking.application.config;
 
 import com.example.coronatracking.application.security.JwtAuthenticationEntryPoint;
 import com.example.coronatracking.application.security.JwtAuthenticationFilter;
-import com.example.coronatracking.application.service.ServiceUserImpl;
+import com.example.coronatracking.application.service.impl.ServiceUserImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

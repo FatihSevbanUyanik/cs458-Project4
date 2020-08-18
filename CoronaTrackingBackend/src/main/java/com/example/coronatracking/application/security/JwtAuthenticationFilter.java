@@ -1,6 +1,6 @@
 package com.example.coronatracking.application.security;
 
-import com.example.coronatracking.application.service.ServiceUserImpl;
+import com.example.coronatracking.application.service.impl.ServiceUserImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -39,10 +39,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
         String jwt = getJwtFromRequest(request);
         Long id = Long.parseLong(tokenProvider.getUserIdFromJWT(jwt));
-        String lang = request.getHeader("lang");
         JwtUserDetail jwtUserDetail = (JwtUserDetail) serviceUser.loadUserById(id);
         return new UsernamePasswordAuthenticationToken(
-                jwtUserDetail, null, jwtUserDetail.getAuthorities());
+                jwtUserDetail, null, null);
     }
 
     private String getJwtFromRequest(HttpServletRequest request) {

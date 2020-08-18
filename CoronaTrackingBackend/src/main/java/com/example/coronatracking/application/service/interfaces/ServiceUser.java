@@ -1,4 +1,4 @@
-package com.example.coronatracking.application.service;
+package com.example.coronatracking.application.service.interfaces;
 
 import com.example.coronatracking.application.model.request.RequestSignUp;
 import com.example.coronatracking.application.model.response.ResponseJwtAuth;

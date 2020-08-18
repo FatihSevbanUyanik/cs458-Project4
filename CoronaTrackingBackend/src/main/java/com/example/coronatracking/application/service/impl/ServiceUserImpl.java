@@ -1,4 +1,4 @@
-package com.example.coronatracking.application.service;
+package com.example.coronatracking.application.service.impl;
 
 import com.example.coronatracking.application.exception.ExceptionAuth;
 import com.example.coronatracking.application.model.entity.EntityUser;
@@ -10,6 +10,7 @@ import com.example.coronatracking.application.model.response.ResponseUser;
 import com.example.coronatracking.application.repo.RepoUser;
 import com.example.coronatracking.application.security.JwtTokenProvider;
 import com.example.coronatracking.application.security.JwtUserDetail;
+import com.example.coronatracking.application.service.interfaces.ServiceUser;
 import com.example.coronatracking.application.util.Constants;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

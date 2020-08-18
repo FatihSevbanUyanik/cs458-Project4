@@ -7,7 +7,7 @@ import com.example.coronatracking.application.model.request.RequestSignUp;
 import com.example.coronatracking.application.model.response.ResponseJwtAuth;
 import com.example.coronatracking.application.model.response.ResponseOperation;
 import com.example.coronatracking.application.model.response.ResponsePasswordReset;
-import com.example.coronatracking.application.service.ServiceUser;
+import com.example.coronatracking.application.service.interfaces.ServiceUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
