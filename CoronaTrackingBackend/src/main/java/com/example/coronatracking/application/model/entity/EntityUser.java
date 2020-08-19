@@ -5,6 +5,7 @@ import com.example.coronatracking.application.util.EmailValidator;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -19,7 +20,6 @@ public class EntityUser {
     private String name;
 
     @Min(0)
-    @Max(100)
     @Column(name = "age", nullable = false)
     private Integer age;
 
@@ -85,7 +85,7 @@ public class EntityUser {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = (password != null && password.length() >= 10) ? password : null;
     }
 
     public String getEmail() {

@@ -45,18 +45,22 @@ public class ServiceUserImpl implements ServiceUser {
     }
 
     @Override
-    @Transactional
     public ResponseOperation signUp(RequestSignUp requestCreateUser) {
-        // check whether username and email already exists.
-        if(repoUser.existsByEmailOrUsername(requestCreateUser.getEmail(), requestCreateUser.getUsername())) {
-            throw new ExceptionAuth("User already Exists");
-        }
+        try {
+            // check whether username and email already exists.
+            if(repoUser.existsByEmailOrUsername(requestCreateUser.getEmail(), requestCreateUser.getUsername())) {
+                throw new ExceptionAuth("User already Exists");
+            }
 
-        // register the user.
-        EntityUser entityUser = mapper.map(requestCreateUser, EntityUser.class);
-        entityUser.setPassword(passwordEncoder.encode(entityUser.getPassword()));
-        repoUser.save(entityUser);
-        return new ResponseOperation(true, "User Signed Up", "CREATE");
+            // register the user.
+            EntityUser entityUser = mapper.map(requestCreateUser, EntityUser.class);
+            entityUser.setPassword(passwordEncoder.encode(entityUser.getPassword()));
+            repoUser.save(entityUser);
+            return new ResponseOperation(true, "User Signed Up", "CREATE");
+
+        } catch (Exception e) {
+            return new ResponseOperation(false, "User could not be Registered", "CREATE");
+        }
     }
 
     @Override

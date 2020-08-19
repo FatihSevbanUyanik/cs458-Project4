@@ -13,29 +13,29 @@ public class EntityTrack {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "fever", nullable = false)
-    private boolean fever;
+    private Boolean fever;
     @Column(name = "cough", nullable = false)
-    private boolean cough;
+    private Boolean cough;
     @Column(name = "chills", nullable = false)
-    private boolean chills;
+    private Boolean chills;
     @Column(name = "headAche", nullable = false)
-    private boolean headAche;
+    private Boolean headAche;
     @Column(name = "tiredness", nullable = false)
-    private boolean tiredness;
+    private Boolean tiredness;
     @Column(name = "runnyNose", nullable = false)
-    private boolean runnyNose;
+    private Boolean runnyNose;
     @Column(name = "chestPain", nullable = false)
-    private boolean chestPain;
+    private Boolean chestPain;
     @Column(name = "muscleAche", nullable = false)
-    private boolean muscleAche;
+    private Boolean muscleAche;
     @Column(name = "soreThroat", nullable = false)
-    private boolean soreThroat;
+    private Boolean soreThroat;
     @Column(name = "difficultBreathing", nullable = false)
-    private boolean difficultBreathing;
+    private Boolean difficultBreathing;
     @Column(name = "status", nullable = false)
     private String status;
     @Column(name = "symptomCount", nullable = false)
-    private int symptomCount;
+    private Integer symptomCount;
     @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -58,83 +58,83 @@ public class EntityTrack {
         this.id = id;
     }
 
-    public boolean isFever() {
+    public Boolean isFever() {
         return fever;
     }
 
-    public void setFever(boolean fever) {
+    public void setFever(Boolean fever) {
         this.fever = fever;
     }
 
-    public boolean isCough() {
+    public Boolean isCough() {
         return cough;
     }
 
-    public void setCough(boolean cough) {
+    public void setCough(Boolean cough) {
         this.cough = cough;
     }
 
-    public boolean isChills() {
+    public Boolean isChills() {
         return chills;
     }
 
-    public void setChills(boolean chills) {
+    public void setChills(Boolean chills) {
         this.chills = chills;
     }
 
-    public boolean isHeadAche() {
+    public Boolean isHeadAche() {
         return headAche;
     }
 
-    public void setHeadAche(boolean headAche) {
+    public void setHeadAche(Boolean headAche) {
         this.headAche = headAche;
     }
 
-    public boolean isTiredness() {
+    public Boolean isTiredness() {
         return tiredness;
     }
 
-    public void setTiredness(boolean tiredness) {
+    public void setTiredness(Boolean tiredness) {
         this.tiredness = tiredness;
     }
 
-    public boolean isRunnyNose() {
+    public Boolean isRunnyNose() {
         return runnyNose;
     }
 
-    public void setRunnyNose(boolean runnyNose) {
+    public void setRunnyNose(Boolean runnyNose) {
         this.runnyNose = runnyNose;
     }
 
-    public boolean isChestPain() {
+    public Boolean isChestPain() {
         return chestPain;
     }
 
-    public void setChestPain(boolean chestPain) {
+    public void setChestPain(Boolean chestPain) {
         this.chestPain = chestPain;
     }
 
-    public boolean isMuscleAche() {
+    public Boolean isMuscleAche() {
         return muscleAche;
     }
 
-    public void setMuscleAche(boolean muscleAche) {
+    public void setMuscleAche(Boolean muscleAche) {
         this.muscleAche = muscleAche;
     }
 
-    public boolean isSoreThroat() {
+    public Boolean isSoreThroat() {
         return soreThroat;
     }
 
-    public void setSoreThroat(boolean soreThroat) {
+    public void setSoreThroat(Boolean soreThroat) {
         this.soreThroat = soreThroat;
     }
 
-    public boolean isDifficultBreathing() {
+    public Boolean isDifficultBreathing() {
         return difficultBreathing;
     }
 
-    public void setDifficultBreathing(boolean difficultBreathing) {
+    public void setDifficultBreathing(Boolean difficultBreathing) {
         this.difficultBreathing = difficultBreathing;
     }
 

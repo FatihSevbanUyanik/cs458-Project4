@@ -4,21 +4,21 @@ import javax.persistence.Column;
 
 public class RequestTrack {
 
-    private boolean fever;
-    private boolean cough;
-    private boolean chills;
-    private boolean headAche;
-    private boolean tiredness;
-    private boolean runnyNose;
-    private boolean chestPain;
-    private boolean muscleAche;
-    private boolean soreThroat;
-    private boolean difficultBreathing;
+    private Boolean fever;
+    private Boolean cough;
+    private Boolean chills;
+    private Boolean headAche;
+    private Boolean tiredness;
+    private Boolean runnyNose;
+    private Boolean chestPain;
+    private Boolean muscleAche;
+    private Boolean soreThroat;
+    private Boolean difficultBreathing;
 
     public RequestTrack() { }
 
-    public RequestTrack(boolean fever, boolean cough, boolean chills, boolean headAche, boolean tiredness,
-                        boolean runnyNose, boolean chestPain, boolean muscleAche, boolean soreThroat, boolean difficultBreathing) {
+    public RequestTrack(Boolean fever, Boolean cough, Boolean chills, Boolean headAche, Boolean tiredness,
+                        Boolean runnyNose, Boolean chestPain, Boolean muscleAche, Boolean soreThroat, Boolean difficultBreathing) {
         this.fever = fever;
         this.cough = cough;
         this.chills = chills;
@@ -31,83 +31,83 @@ public class RequestTrack {
         this.difficultBreathing = difficultBreathing;
     }
 
-    public boolean isFever() {
+    public Boolean isFever() {
         return fever;
     }
 
-    public void setFever(boolean fever) {
+    public void setFever(Boolean fever) {
         this.fever = fever;
     }
 
-    public boolean isCough() {
+    public Boolean isCough() {
         return cough;
     }
 
-    public void setCough(boolean cough) {
+    public void setCough(Boolean cough) {
         this.cough = cough;
     }
 
-    public boolean isChills() {
+    public Boolean isChills() {
         return chills;
     }
 
-    public void setChills(boolean chills) {
+    public void setChills(Boolean chills) {
         this.chills = chills;
     }
 
-    public boolean isHeadAche() {
+    public Boolean isHeadAche() {
         return headAche;
     }
 
-    public void setHeadAche(boolean headAche) {
+    public void setHeadAche(Boolean headAche) {
         this.headAche = headAche;
     }
 
-    public boolean isTiredness() {
+    public Boolean isTiredness() {
         return tiredness;
     }
 
-    public void setTiredness(boolean tiredness) {
+    public void setTiredness(Boolean tiredness) {
         this.tiredness = tiredness;
     }
 
-    public boolean isRunnyNose() {
+    public Boolean isRunnyNose() {
         return runnyNose;
     }
 
-    public void setRunnyNose(boolean runnyNose) {
+    public void setRunnyNose(Boolean runnyNose) {
         this.runnyNose = runnyNose;
     }
 
-    public boolean isChestPain() {
+    public Boolean isChestPain() {
         return chestPain;
     }
 
-    public void setChestPain(boolean chestPain) {
+    public void setChestPain(Boolean chestPain) {
         this.chestPain = chestPain;
     }
 
-    public boolean isMuscleAche() {
+    public Boolean isMuscleAche() {
         return muscleAche;
     }
 
-    public void setMuscleAche(boolean muscleAche) {
+    public void setMuscleAche(Boolean muscleAche) {
         this.muscleAche = muscleAche;
     }
 
-    public boolean isSoreThroat() {
+    public Boolean isSoreThroat() {
         return soreThroat;
     }
 
-    public void setSoreThroat(boolean soreThroat) {
+    public void setSoreThroat(Boolean soreThroat) {
         this.soreThroat = soreThroat;
     }
 
-    public boolean isDifficultBreathing() {
+    public Boolean isDifficultBreathing() {
         return difficultBreathing;
     }
 
-    public void setDifficultBreathing(boolean difficultBreathing) {
+    public void setDifficultBreathing(Boolean difficultBreathing) {
         this.difficultBreathing = difficultBreathing;
     }
 }
