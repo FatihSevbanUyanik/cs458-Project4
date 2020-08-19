@@ -90,7 +90,7 @@ class UnitTestsAuth {
 
 
     @Test
-    void testRequestPasswordReset() throws Exception{
+    void testRequestPasswordReset() {
         repoUser.deleteAll();
         // Sign Up User
         String email = "fatih15@gmail.com";
