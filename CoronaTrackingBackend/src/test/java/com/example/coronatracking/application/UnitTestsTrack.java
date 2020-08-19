@@ -36,7 +36,6 @@ public class UnitTestsTrack {
     @BeforeAll
     public void setup() {
         // Sign Up User
-        System.out.println("beforeeach");
         String name = "Fatih Sevban Uyanık";
         String password = "mysecretpassword";
         String email = "fatih15@gmail.com";
@@ -55,11 +54,11 @@ public class UnitTestsTrack {
     public void testCreateTrack() {
         RequestTrack[] requestTracks = {
                 new RequestTrack(true, false, true, true, false,false,
-                        false, false, false, false),
+                        false, false, false, false), // correct data
                 new RequestTrack(false, false, true, false, false, false,
-                        false, false, false, false),
+                        false, false, false, false), // correct data
                 new RequestTrack(false, null, true, true, true, false,
-                        null, null, true, true)
+                        null, null, true, true) // wrong data, not sending some symptomps
         };
 
         boolean[] expected = { true, true, false };
@@ -94,9 +93,9 @@ public class UnitTestsTrack {
 
     public void testDeleteTrack(Long id) {
         RequestId requestId = new RequestId(id);
-        ResponseEntity<ResponseOperation> resOp = contTrack.deleteTrack(requestId);
-        Assert.notNull(resOp);
-        Assert.isTrue(resOp.getBody().getSuccess());
+        ResponseEntity<ResponseOperation> response = contTrack.deleteTrack(requestId);
+        Assert.notNull(response);
+        Assert.isTrue(response.getBody().getSuccess());
     }
 
     @AfterAll

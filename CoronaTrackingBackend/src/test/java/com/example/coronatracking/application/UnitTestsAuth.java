@@ -20,11 +20,9 @@ class UnitTestsAuth {
     private ControllerAuth contAuth;
     @Autowired
     private RepoUser repoUser;
-    @Autowired
-    private ControllerTrack contTrack;
 
     @Test
-    void testSignUp() throws Exception{
+    void testSignUp() {
         repoUser.deleteAll();
         int NUM_OF_TEST_CASES = 7;
 
@@ -50,7 +48,7 @@ class UnitTestsAuth {
 
 
     @Test
-    void testSignIn() throws Exception{
+    void testSignIn() {
         repoUser.deleteAll();
         // Sign Up User
         String username = "fatih";
