@@ -14,11 +14,9 @@ import com.example.coronatracking.application.repo.RepoUser;
 import io.jsonwebtoken.lang.Assert;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 @SpringBootTest
@@ -55,21 +53,25 @@ public class UnitTestsTrack {
     @Test
     @Order(1)
     public void testCreateTrack() {
-        RequestTrack requestTrack1 = new RequestTrack(
-                true, false, true, true, false,
-                false, false, false, false, false);
+        RequestTrack[] requestTracks = {
+                new RequestTrack(true, false, true, true, false,false,
+                        false, false, false, false),
+                new RequestTrack(false, false, true, false, false, false,
+                        false, false, false, false),
+                new RequestTrack(false, null, true, true, true, false,
+                        null, null, true, true)
+        };
 
-        RequestTrack requestTrack2 = new RequestTrack(false, true, true, true,
-                true, false, true, true, true, true);
-
-        testCreateTrack(requestTrack1);
-        testCreateTrack(requestTrack2);
+        boolean[] expected = { true, true, false };
+        for (int i = 0; i < 3; i++) {
+            testCreateTrack(requestTracks[i], expected[i]);
+        }
     }
 
-    public void testCreateTrack(RequestTrack requestTrack) {
+    public void testCreateTrack(RequestTrack requestTrack, Boolean expected) {
         ResponseEntity<ResponseOperation> response = contTrack.createTrack(requestTrack);
         Assert.notNull(response);
-        Assert.isTrue(response.getBody().getSuccess());
+        Assert.isTrue(response.getBody().getSuccess() == expected);
     }
 
     @Test

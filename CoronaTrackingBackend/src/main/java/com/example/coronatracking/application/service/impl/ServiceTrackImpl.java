@@ -39,37 +39,42 @@ public class ServiceTrackImpl implements ServiceTrack {
     @Override
     @Transactional
     public ResponseOperation createTrack(RequestTrack requestTrack) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Long userId = ((JwtUserDetail) auth.getPrincipal()).getId();
-        Optional<EntityUser> optional = repoUser.findById(userId);
-        if (!optional.isPresent()) {
-            throw new RuntimeException("User not found");
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            Long userId = ((JwtUserDetail) auth.getPrincipal()).getId();
+            Optional<EntityUser> optional = repoUser.findById(userId);
+            if (!optional.isPresent()) {
+                throw new RuntimeException("User not found");
+            }
+
+            EntityUser entityUser = optional.get();
+            EntityTrack entityTrack = mapper.map(requestTrack, EntityTrack.class);
+
+            int metric = 0;
+            int symptomCount = 0;
+
+            if (entityTrack.isFever()) { metric += 3; symptomCount++; }
+            if (entityTrack.isDifficultBreathing()) { metric += 3; symptomCount++; }
+            if (entityTrack.isCough()) { metric += 3; symptomCount++; }
+            if (entityTrack.isTiredness()) { metric += 2; symptomCount++; }
+            if (entityTrack.isChestPain()) { metric += 2; symptomCount++; }
+            if (entityTrack.isChills()) { metric += 1; symptomCount++; }
+            if (entityTrack.isHeadAche()) { metric += 1; symptomCount++; }
+            if (entityTrack.isMuscleAche()) { metric += 1; symptomCount++; }
+            if (entityTrack.isSoreThroat()) { metric += 1; symptomCount++; }
+            if (entityTrack.isRunnyNose()) { metric += 1; symptomCount++; }
+
+            if (metric <= 6) { entityTrack.setStatus("Low Risk"); }
+            else if (metric <= 10) { entityTrack.setStatus("Medium Risk"); }
+            else { entityTrack.setStatus("High Risk"); }
+            entityTrack.setSymptomCount(symptomCount);
+            entityUser.addTrack(entityTrack);
+            repoUser.save(entityUser);
+            return new ResponseOperation(true, "Track Created", "CREATE");
+
+        } catch (Exception e) {
+            return new ResponseOperation(false, "Track could not be Created", "CREATE");
         }
-
-        EntityUser entityUser = optional.get();
-        EntityTrack entityTrack = mapper.map(requestTrack, EntityTrack.class);
-
-        int metric = 0;
-        int symptomCount = 0;
-
-        if (entityTrack.isFever()) { metric += 3; symptomCount++; }
-        if (entityTrack.isDifficultBreathing()) { metric += 3; symptomCount++; }
-        if (entityTrack.isCough()) { metric += 3; symptomCount++; }
-        if (entityTrack.isTiredness()) { metric += 2; symptomCount++; }
-        if (entityTrack.isChestPain()) { metric += 2; symptomCount++; }
-        if (entityTrack.isChills()) { metric += 1; symptomCount++; }
-        if (entityTrack.isHeadAche()) { metric += 1; symptomCount++; }
-        if (entityTrack.isMuscleAche()) { metric += 1; symptomCount++; }
-        if (entityTrack.isSoreThroat()) { metric += 1; symptomCount++; }
-        if (entityTrack.isRunnyNose()) { metric += 1; symptomCount++; }
-
-        if (metric <= 6) { entityTrack.setStatus("Low Risk"); }
-        else if (metric <= 10) { entityTrack.setStatus("Medium Risk"); }
-        else { entityTrack.setStatus("High Risk"); }
-        entityTrack.setSymptomCount(symptomCount);
-        entityUser.addTrack(entityTrack);
-        repoUser.save(entityUser);
-        return new ResponseOperation(true, "Track Created", "CREATE");
     }
 
     @Override
