@@ -16,6 +16,11 @@ import TrackCreate from '@/components/track/create.vue'
 
 const routes = [
   {
+    path: "",
+    name: "root",
+    component: AuthSignIn,
+  },
+  {
     path: "/auth",
     component: Auth,
     children: [{

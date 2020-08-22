@@ -39,12 +39,12 @@ import SignUpForm from "@/components/auth/SignUpForm";
 
 export default {
     created() {
-        if (this.$router.currentRoute.name == "auth.signIn") {
-            this.componentId = "SignInForm"
+        if (this.$router.currentRoute.name == "auth.signUp") {
+            this.componentId = "SignUpForm"
         } else if (this.$router.currentRoute.name == "auth.forgotPassword") {
             this.componentId = "ForgotPasswordForm"
         } else {
-            this.componentId = "SignUpForm"
+            this.componentId = "SignInForm"
         }
     },
     data() {

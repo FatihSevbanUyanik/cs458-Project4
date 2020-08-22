@@ -95,7 +95,7 @@ export default {
   validations: {
       passwordConfirm: { required, sameAsPassword: sameAs("password") },
       nameSurname: { required },
-      password: { required, minLength: minLength(8) },
+      password: { required, minLength: minLength(10) },
       username: { required },
       email: { required, email },
       age: { required }
@@ -117,7 +117,7 @@ export default {
       const errors = [];
       if (!this.$v.password.$dirty) return errors;
       !this.$v.password.required && errors.push("Password is required.");
-      !this.$v.password.minLength && errors.push("Minnimium 8 characters are required.");
+      !this.$v.password.minLength && errors.push("Minnimium 10 characters are required.");
       !this.password === this.passwordConfirm && errors.push("Passwords do not match");
       return errors;
     },
@@ -158,9 +158,13 @@ export default {
             email: this.email,
             age: this.age
          })
-         .then(() => {
-            this.$toastr.s("Successfully Signed Up")
-            this.goToSignIn()
+         .then(result => {
+           if (result.success) {
+              this.$toastr.s("Successfully Signed Up")
+              this.goToSignIn()
+           } else {
+              this.$toastr.e("Register Error");
+           }
          })
          .catch(() => {
             this.$toastr.e("Register Error");
